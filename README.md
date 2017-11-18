@@ -1,2 +1,4 @@
-# everythingDlmu
-校园微信公众号,空闲时间做着玩
+# wxpytest
+ Python 微信公众号开发
+
+https://zhuanlan.zhihu.com/p/21354943
