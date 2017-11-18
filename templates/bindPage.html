@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+$def with (task)
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>bind your student number</title>
+    <meta charset="utf-8">
+    <title>请输入你的账号和密码</title>
 </head>
 <body>
-
-<form action="/menu/10" method='post'>
-    student num:<br>
+<form action="/menu/$task" method='post'>
+    学号:<br>
     <input type="text" name="stu_num"><br>
-    password:<br>
+    密码:<br>
     <input type="text" name="stu_pwd"><br>
-    <input type="submit" value="enter">
-
+    <input type="submit" value="查询">
 </form>
 
 </body>
