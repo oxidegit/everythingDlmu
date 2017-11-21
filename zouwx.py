@@ -68,11 +68,13 @@ class zouwx:
                 if (True):#这里要判断下，输入的功能是否在合理范围内
                     num = int(msgContent)
                     url = 'http://sgyyamn.free.ngrok.cc/menu/'+str(num)
+
+
                     reply = create_reply(url, message=msg)
                 return reply.render()
             elif (msgContent == u'菜单'):
                 print msgContent
-                reply = create_reply("输入数字1，查询课表", message=msg)
+                reply = create_reply("输入\n数字1，查询课表\n数字2，查询借阅信息\n数字3，查询校园网信息", message=msg)
             else:
                 reply = create_reply("输入菜单，查看详细功能", message=msg)
         elif (msgType == 'image'):

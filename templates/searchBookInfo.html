@@ -3,7 +3,7 @@ $def with (task)
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>请输入你的账号和密码， 查询相应的信息</title>
+    <title>请输入你的账号和密码，查询相应的图书借阅信息</title>
 </head>
 <body>
 <form action="/menu/$task" method='post'>
@@ -11,8 +11,8 @@ $def with (task)
     <input type="text" name="stu_num"><br>
     密码:<br>
     <input type="text" name="stu_pwd"><br>
-    <>
-    <>
+    验证码：<img src="./image/check.gif" alt="图片无法加载"><br>
+    <input type="text" name="checkcode"><br>
     <input type="submit" value="查询">
 </form>
 
