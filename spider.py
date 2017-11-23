@@ -98,24 +98,23 @@ class DlnuSpider:
         pwd.send_keys(self.pwd)
         submit = browser.find_element_by_name('Submit')
         submit.click()
+        try:
+            browser.get(self.dlnu_url['net_info'])
+            content = {}
 
-        browser.get(self.dlnu_url['net_info'])
-        content = {}
-
-        a = browser.find_elements_by_class_name('account')
-        content[u'账号:'] = a[0].text
-        content[u'套餐:'] = browser.find_element_by_class_name('service').text
-        content[u'余额:'] = browser.find_element_by_class_name('redtext').text
-        content[u'状态:'] = browser.find_element_by_class_name('greentextl').text
-        #content['是否在线'] = browser.find_element_by_class_name('greentext21')
-        info = browser.find_elements_by_class_name('t_r1')
-        content[u'本月时长:'] = info[1].text
-        content[u'本月流量:'] = info[2].text
-        content[u'用户类别:'] = info[4].text
-
-        browser.close()
-
-        return content
+            a = browser.find_elements_by_class_name('account')
+            content[u'账号:'] = a[0].text
+            content[u'套餐:'] = browser.find_element_by_class_name('service').text
+            content[u'余额:'] = browser.find_element_by_class_name('redtext').text
+            content[u'状态:'] = browser.find_element_by_class_name('greentextl').text
+            #content['是否在线'] = browser.find_element_by_class_name('greentext21')
+            info = browser.find_elements_by_class_name('t_r1')
+            content[u'本月时长:'] = info[1].text
+            content[u'本月流量:'] = info[2].text
+            content[u'用户类别:'] = info[4].text
+            return content
+        except:
+            browser.close()
     # 爬取校园网信息
     def getNetInfo(self):
         try:
@@ -142,6 +141,7 @@ class DlnuSpider:
 
             return r1.text, state
         except:
+
             return '出错了'
 
             # 爬取课程信息

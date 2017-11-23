@@ -68,15 +68,24 @@ class zouwx:
                 if (True):#这里要判断下，输入的功能是否在合理范围内
                     num = int(msgContent)
                     url = 'http://sgyyamn.free.ngrok.cc/menu/'+str(num)
-
-
-                    reply = create_reply(url, message=msg)
+                    if (num==1):
+                        info = "课表"
+                    elif (num==2):
+                        info = "借阅信息"
+                    else:
+                        info = "校园网信息"
+                    a = format("<a href=\"%s\">亲，点击查询%s</a>"%(url, info))
+                    reply = create_reply(a, message=msg)
                 return reply.render()
             elif (msgContent == u'菜单'):
                 print msgContent
                 reply = create_reply("输入\n数字1，查询课表\n数字2，查询借阅信息\n数字3，查询校园网信息", message=msg)
             else:
-                reply = create_reply("输入菜单，查看详细功能", message=msg)
+                url = 'http://www.tuling123.com/openapi/api'
+                s = json.dumps({'key':'7ddf844547a446a7a9d22e8de2fb41f4', 'info':msgContent, 'userid':'175534'})
+                r = requests.post(url, data=s)
+                t = json.loads(r.text)
+                reply = create_reply(t['text'], message=msg)
         elif (msgType == 'image'):
             reply = create_reply('这是图片消息', message=msg)
         elif (msgType == 'voice'):
