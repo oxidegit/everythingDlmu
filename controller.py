@@ -3,7 +3,7 @@
 
 import web
 import os
-import spider as sp
+from spider import DlnuSpider
 
 class controller:
     def __init__(self):
@@ -19,22 +19,31 @@ class controller:
         return self.render.bindPage(id)
 
     def POST(self, id):
-        
+
         data = web.input()
         stu_num = data.get('stu_num')
         stu_pwd = data.get('stu_pwd')
+        sp = DlnuSpider(stu_num, stu_pwd)
         id = int(id)
 
         #查询课程信息
         if id==1:
-            content, state = sp.getCourseInfo('http://zhjw.dlnu.edu.cn/xkAction.do', stu_num, stu_pwd)
+            content, state = sp.getCourseInfo()
+            if (state == 0):
+                return u"大兄弟，信息错误， 俺无能为力啊".encode("gb2312")
+            else:
+                return content.encode("gb2312", errors = 'ignore')
         #查询图书借阅信息
         elif id==2:
             content, state = sp.getBookInfo()
+            if (state == 0):
+                return u"大兄弟，信息错误， 俺无能为力啊".encode("gb2312")
+            else:
+                return self.render.BookInfo(content)
+        elif id==3:
+            content = sp.getNetBySele()
 
-        if (state == 0):
-            return u"大兄弟，信息错误， 俺无能为力啊".encode("gb2312")
-        else:
-            return content.encode("gb2312")
+            return self.render.netInfo(content)
+
 
 

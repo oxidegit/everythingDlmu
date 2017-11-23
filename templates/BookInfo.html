@@ -1,0 +1,12 @@
+$def with (task)
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借阅历史</title>
+</head>
+    $for t in task:
+        $:t[0] &nbsp $:t[1] &nbsp $:t[2] &nbsp $:t[3]<br>
+
+</body>
+</html>

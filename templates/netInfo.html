@@ -1,0 +1,11 @@
+$def with (task)
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>校园网信息</title>
+</head>
+    $for (d, x) in task.items():
+        $:d &nbsp $:x <br>
+</body>
+</html>
