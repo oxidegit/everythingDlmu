@@ -21,13 +21,13 @@ class DlnuSpider:
         self.pwd = stu_pwd
         self.sess = r.Session()
         self.dlnu_url = {'library_check':'http://210.30.8.233:8080/reader/captcha.php',#图书管理系统验证码url
-                        'library_index':'http://210.30.1.114:8089/Self/nav_login',
-                         'library_login':'http://210.30.8.233:8080/reader/redr_verify.php',
-                         'library_book':'http://210.30.8.233:8080/reader/book_hist.php?page=1',
-                        'school_login':'http://zhjw.dlnu.edu.cn/loginAction.do',
-                        'course_info':'http://zhjw.dlnu.edu.cn/xkAction.do',
-                         'net_index':'http://210.30.1.114:8089/Self/nav_login',
-                        'net_info':'http://210.30.1.114:8089/Self/nav_getUserInfo'
+                        'library_index':'http://210.30.1.114:8089/Self/nav_login',#图书管理系统首页
+                         'library_login':'http://210.30.8.233:8080/reader/redr_verify.php',#图书管理系统登录页面
+                         'library_book':'http://210.30.8.233:8080/reader/book_hist.php?page=1',#图书管理系统图书信息页面
+                        'school_login':'http://zhjw.dlnu.edu.cn/loginAction.do',#教务系统登录页面
+                        'course_info':'http://zhjw.dlnu.edu.cn/xkAction.do',#课程信息页面
+                         'net_index':'http://210.30.1.114:8089/Self/nav_login',#校园网系统首页
+                        'net_info':'http://210.30.1.114:8089/Self/nav_getUserInfo'#校园网信息页面
                      }
     def getCourseInfo(self):
         try:
